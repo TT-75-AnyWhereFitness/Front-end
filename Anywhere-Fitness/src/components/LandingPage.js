@@ -1,200 +1,304 @@
-import React from "react"
+import React from "react";
+// import "../assets/css/main.css"
 
 export const LandingPage = () => {
+  return (
+    <div id="wrapper">
+      {/* <!-- Header --> */}
+      {/* <!-- Note: The "styleN" className below should match that of the banner element. --> */}
+      <header id="header" className="alt style2">
+        <nav>
+          <a href="#menu">Menu</a>
+        </nav>
+      </header>
 
-    return (
-        <div id="wrapper">
+      {/* <!-- Menu --> */}
+      <nav id="menu">
+        <ul className="links">
+          <li>
+            <a href="##" className="button primary fit">
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="##" className="button primary fit">
+              Get Started
+            </a>
+          </li>
+          <li>
+            <a href="##" className="button fit">
+              Log In
+            </a>
+          </li>
+        </ul>
+      </nav>
 
-				{/* <!-- Header --> */}
-				{/* <!-- Note: The "styleN" class below should match that of the banner element. --> */}
-					<header id="header" class="alt style2">
-						<a href="index.html" class="logo"><strong>Forty</strong> <span>by HTML5 UP</span></a>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
-					</header>
+      {/* <!-- Banner --> */}
+      {/* <!-- Note: The "styleN" className below should match that of the header element. --> */}
+      <section
+        id="banner"
+        className="style2" /* style={background-position: center 0px; background-image: url('images/fitness.jpg')} */
+      >
+        <div className="inner">
+          <span className="image">
+            <img src="images/pic07.jpg" alt="" />
+          </span>
+          <header className="major">
+            <h1>Anywhere Fitness</h1>
+          </header>
+          <div className="content">
+            <p>
+              These days, fitness classes can be held anywhere- a park, an
+              unfinished basement or a garage- not just at a traditional gym.
+              Certified fitness instructors need an easy way to take the
+              awkwardness out of attendance taking and client payment
+              processing.
+            </p>
+          </div>
+        </div>
+      </section>
 
-				{/* <!-- Menu --> */}
-					<nav id="menu">
-						<ul class="links">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="landing.html">Landing</a></li>
-							<li><a href="generic.html">Generic</a></li>
-							<li><a href="elements.html">Elements</a></li>
-						</ul>
-						<ul class="actions stacked">
-							<li><a href="##" class="button primary fit">Get Started</a></li>
-							<li><a href="##" class="button fit">Log In</a></li>
-						</ul>
-					</nav>
+      {/* <!-- Main --> */}
+      <div id="main">
+        {/* <!-- One --> */}
+        <section id="one">
+          <div className="inner">
+            <header className="major">
+              <h2>Sed amet aliquam</h2>
+            </header>
+            <p>
+              Nullam et orci eu lorem consequat tincidunt vivamus et sagittis
+              magna sed nunc rhoncus condimentum sem. In efficitur ligula tate
+              urna. Maecenas massa vel lacinia pellentesque lorem ipsum dolor.
+              Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis
+              libero. Nullam et orci eu lorem consequat tincidunt vivamus et
+              sagittis magna sed nunc rhoncus condimentum sem. In efficitur
+              ligula tate urna.
+            </p>
+          </div>
+        </section>
 
-				{/* <!-- Banner --> */}
-				{/* <!-- Note: The "styleN" class below should match that of the header element. --> */}
-					<section id="banner" class="style2" /* style={background-position: center 0px; background-image: url('images/fitness.jpg')} */ >
-						<div class="inner">
-							<span class="image">
-								<img src="images/pic07.jpg" alt="" />
-							</span>
-							<header class="major">
-								<h1>Anywhere Fitness</h1>
-							</header>
-							<div class="content">
-								<p>These days, fitness classes can be held anywhere- a park, an unfinished basement or a garage- not just at a traditional gym. Certified fitness instructors need an easy way to take the awkwardness out of attendance taking and client payment processing.</p>
-							</div>
-						</div>
-					</section>
+        {/* <!-- Two --> */}
+        <section id="two" className="spotlights">
+          <section>
+            <a href="generic.html" className="image">
+              <img
+                src="images/fitness2.jpg"
+                alt=""
+                data-position="center center"
+              />
+            </a>
+            <div className="content">
+              <div className="inner">
+                <header className="major">
+                  <h3>Orci maecenas</h3>
+                </header>
+                <p>
+                  Nullam et orci eu lorem consequat tincidunt vivamus et
+                  sagittis magna sed nunc rhoncus condimentum sem. In efficitur
+                  ligula tate urna. Maecenas massa sed magna lacinia magna
+                  pellentesque lorem ipsum dolor. Nullam et orci eu lorem
+                  consequat tincidunt. Vivamus et sagittis tempus.
+                </p>
+                <ul className="actions">
+                  <li>
+                    <a href="generic.html" className="button">
+                      Learn more
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <section>
+            <a href="generic.html" className="image">
+              <img
+                src="images/fitness3.jpg"
+                alt=""
+                data-position="top center"
+              />
+            </a>
+            <div className="content">
+              <div className="inner">
+                <header className="major">
+                  <h3>Rhoncus magna</h3>
+                </header>
+                <p>
+                  Nullam et orci eu lorem consequat tincidunt vivamus et
+                  sagittis magna sed nunc rhoncus condimentum sem. In efficitur
+                  ligula tate urna. Maecenas massa sed magna lacinia magna
+                  pellentesque lorem ipsum dolor. Nullam et orci eu lorem
+                  consequat tincidunt. Vivamus et sagittis tempus.
+                </p>
+                <ul className="actions">
+                  <li>
+                    <a href="generic.html" className="button">
+                      Learn more
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <section>
+            <a href="generic.html" className="image">
+              <img src="images/fitness4.jpg" alt="" data-position="25% 25%" />
+            </a>
+            <div className="content">
+              <div className="inner">
+                <header className="major">
+                  <h3>Sed nunc ligula</h3>
+                </header>
+                <p>
+                  Nullam et orci eu lorem consequat tincidunt vivamus et
+                  sagittis magna sed nunc rhoncus condimentum sem. In efficitur
+                  ligula tate urna. Maecenas massa sed magna lacinia magna
+                  pellentesque lorem ipsum dolor. Nullam et orci eu lorem
+                  consequat tincidunt. Vivamus et sagittis tempus.
+                </p>
+                <ul className="actions">
+                  <li>
+                    <a href="generic.html" className="button">
+                      Learn more
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </section>
 
-				{/* <!-- Main --> */}
-					<div id="main">
+        {/* <!-- Three --> */}
+        <section id="three">
+          <div className="inner">
+            <header className="major">
+              <h2>Massa libero</h2>
+            </header>
+            <p>
+              Nullam et orci eu lorem consequat tincidunt vivamus et sagittis
+              libero. Mauris aliquet magna magna sed nunc rhoncus pharetra.
+              Pellentesque condimentum sem. In efficitur ligula tate urna.
+              Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor.
+              Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis
+              libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra
+              et feugiat tempus.
+            </p>
+            <ul className="actions">
+              <li>
+                <a href="generic.html" className="button next">
+                  Get Started
+                </a>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
 
-						{/* <!-- One --> */}
-							<section id="one">
-								<div class="inner">
-									<header class="major">
-										<h2>Sed amet aliquam</h2>
-									</header>
-									<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna.</p>
-								</div>
-							</section>
+      {/* <!-- Contact --> */}
+      <section id="contact">
+        <div className="inner">
+          <section>
+            <form method="post" action="#">
+              <div className="fields">
+                <div className="field half">
+                  <label htmlFor="name">Name</label>
+                  <input type="text" name="name" id="name" />
+                </div>
+                <div className="field half">
+                  <label htmlFor="email">Email</label>
+                  <input type="text" name="email" id="email" />
+                </div>
+                <div className="field">
+                  <label htmlFor="message">Message</label>
+                  <textarea name="message" id="message" rows="6"></textarea>
+                </div>
+              </div>
+              <ul className="actions">
+                <li>
+                  <input
+                    type="submit"
+                    value="Send Message"
+                    className="primary"
+                  />
+                </li>
+                <li>
+                  <input type="reset" value="Clear" />
+                </li>
+              </ul>
+            </form>
+          </section>
+          <section className="split">
+            <section>
+              <div className="contact-method">
+                <span className="icon solid alt fa-envelope"></span>
+                <h3>Email</h3>
+                <a href="##">information@untitled.tld</a>
+              </div>
+            </section>
+            <section>
+              <div className="contact-method">
+                <span className="icon solid alt fa-phone"></span>
+                <h3>Phone</h3>
+                <span>(000) 000-0000 x12387</span>
+              </div>
+            </section>
+            <section>
+              <div className="contact-method">
+                <span className="icon solid alt fa-home"></span>
+                <h3>Address</h3>
+                <span>
+                  1234 Somewhere Road #5432
+                  <br />
+                  Nashville, TN 00000
+                  <br />
+                  United States of America
+                </span>
+              </div>
+            </section>
+          </section>
+        </div>
+      </section>
 
-						{/* <!-- Two --> */}
-							<section id="two" class="spotlights">
-								<section>
-									<a href="generic.html" class="image">
-										<img src="images/fitness2.jpg" alt="" data-position="center center" />
-									</a>
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Orci maecenas</h3>
-											</header>
-											<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
-											<ul class="actions">
-												<li><a href="generic.html" class="button">Learn more</a></li>
-											</ul>
-										</div>
-									</div>
-								</section>
-								<section>
-									<a href="generic.html" class="image">
-										<img src="images/fitness3.jpg" alt="" data-position="top center" />
-									</a>
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Rhoncus magna</h3>
-											</header>
-											<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
-											<ul class="actions">
-												<li><a href="generic.html" class="button">Learn more</a></li>
-											</ul>
-										</div>
-									</div>
-								</section>
-								<section>
-									<a href="generic.html" class="image">
-										<img src="images/fitness4.jpg" alt="" data-position="25% 25%" />
-									</a>
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Sed nunc ligula</h3>
-											</header>
-											<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
-											<ul class="actions">
-												<li><a href="generic.html" class="button">Learn more</a></li>
-											</ul>
-										</div>
-									</div>
-								</section>
-							</section>
+      {/* <!-- Footer --> */}
+      <footer id="footer">
+        <div className="inner">
+          <ul className="icons">
+            <li>
+              <a href="##" className="icon brands alt fa-twitter">
+                <span className="label">Twitter</span>
+              </a>
+            </li>
+            <li>
+              <a href="##" className="icon brands alt fa-facebook-f">
+                <span className="label">Facebook</span>
+              </a>
+            </li>
+            <li>
+              <a href="##" className="icon brands alt fa-instagram">
+                <span className="label">Instagram</span>
+              </a>
+            </li>
+            <li>
+              <a href="##" className="icon brands alt fa-github">
+                <span className="label">GitHub</span>
+              </a>
+            </li>
+            <li>
+              <a href="##" className="icon brands alt fa-linkedin-in">
+                <span className="label">LinkedIn</span>
+              </a>
+            </li>
+          </ul>
+          <ul className="copyright">
+            <li>&copy; Untitled</li>
+            <li>
+              Design: <a href="https://html5up.net">HTML5 UP</a>
+            </li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+  );
+};
 
-						{/* <!-- Three --> */}
-							<section id="three">
-								<div class="inner">
-									<header class="major">
-										<h2>Massa libero</h2>
-									</header>
-									<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</p>
-									<ul class="actions">
-										<li><a href="generic.html" class="button next">Get Started</a></li>
-									</ul>
-								</div>
-							</section>
-
-					</div>
-
-				{/* <!-- Contact --> */}
-					<section id="contact">
-						<div class="inner">
-							<section>
-								<form method="post" action="#">
-									<div class="fields">
-										<div class="field half">
-											<label for="name">Name</label>
-											<input type="text" name="name" id="name" />
-										</div>
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" />
-										</div>
-										<div class="field">
-											<label for="message">Message</label>
-											<textarea name="message" id="message" rows="6"></textarea>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Send Message" class="primary" /></li>
-										<li><input type="reset" value="Clear" /></li>
-									</ul>
-								</form>
-							</section>
-							<section class="split">
-								<section>
-									<div class="contact-method">
-										<span class="icon solid alt fa-envelope"></span>
-										<h3>Email</h3>
-										<a href="##">information@untitled.tld</a>
-									</div>
-								</section>
-								<section>
-									<div class="contact-method">
-										<span class="icon solid alt fa-phone"></span>
-										<h3>Phone</h3>
-										<span>(000) 000-0000 x12387</span>
-									</div>
-								</section>
-								<section>
-									<div class="contact-method">
-										<span class="icon solid alt fa-home"></span>
-										<h3>Address</h3>
-										<span>1234 Somewhere Road #5432<br />
-										Nashville, TN 00000<br />
-										United States of America</span>
-									</div>
-								</section>
-							</section>
-						</div>
-					</section>
-
-				{/* <!-- Footer --> */}
-					<footer id="footer">
-						<div class="inner">
-							<ul class="icons">
-								<li><a href="##" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-								<li><a href="##" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-								<li><a href="##" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-								<li><a href="##" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								<li><a href="##" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-							</ul>
-							<ul class="copyright">
-								<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</footer>
-
-			</div>
-    )
-}
-
-export default LandingPage
+export default LandingPage;
