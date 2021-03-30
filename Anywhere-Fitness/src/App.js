@@ -5,7 +5,11 @@ import LandingPage from "./components/LandingPage"
 function App() {
   return (
     <Router>
-      <LandingPage />
+      {/* Header goes here */}
+      <Switch>
+        <Route exact path='/' component={Login} />
+        <Route path='/home' component={LandingPage} />
+      </Switch>
     </Router>
   );
 }
