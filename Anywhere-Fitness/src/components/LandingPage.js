@@ -1,5 +1,12 @@
 import React from "react";
-// import "../assets/css/main.css"
+// import {
+//   Route,
+//   Switch,
+//   useHistory,
+//   BrowserRouter as Router,
+// } from "react-router-dom";
+
+import "../assets/css/main.css";
 
 export const LandingPage = () => {
   return (
@@ -81,9 +88,9 @@ export const LandingPage = () => {
         {/* <!-- Two --> */}
         <section id="two" className="spotlights">
           <section>
-            <a href="generic.html" className="image">
+            <a href="##" className="image">
               <img
-                src="images/fitness2.jpg"
+                src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
                 alt=""
                 data-position="center center"
               />
@@ -102,7 +109,7 @@ export const LandingPage = () => {
                 </p>
                 <ul className="actions">
                   <li>
-                    <a href="generic.html" className="button">
+                    <a href="/signup" className="button">
                       Learn more
                     </a>
                   </li>
@@ -111,9 +118,9 @@ export const LandingPage = () => {
             </div>
           </section>
           <section>
-            <a href="generic.html" className="image">
+            <a href="##" className="image">
               <img
-                src="images/fitness3.jpg"
+                src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80"
                 alt=""
                 data-position="top center"
               />
@@ -132,7 +139,7 @@ export const LandingPage = () => {
                 </p>
                 <ul className="actions">
                   <li>
-                    <a href="generic.html" className="button">
+                    <a href="/signup" className="button">
                       Learn more
                     </a>
                   </li>
@@ -141,8 +148,8 @@ export const LandingPage = () => {
             </div>
           </section>
           <section>
-            <a href="generic.html" className="image">
-              <img src="images/fitness4.jpg" alt="" data-position="25% 25%" />
+            <a href="##" className="image">
+              <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=968&q=80" alt="" data-position="25% 25%" />
             </a>
             <div className="content">
               <div className="inner">
@@ -158,7 +165,7 @@ export const LandingPage = () => {
                 </p>
                 <ul className="actions">
                   <li>
-                    <a href="generic.html" className="button">
+                    <a href="/signup" className="button">
                       Learn more
                     </a>
                   </li>
