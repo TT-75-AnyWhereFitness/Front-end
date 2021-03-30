@@ -21,12 +21,12 @@ export const LandingPage = () => {
             </a>
           </li>
           <li>
-            <a href="##" className="button primary fit">
+            <a href="signup" className="button primary fit">
               Get Started
             </a>
           </li>
           <li>
-            <a href="##" className="button fit">
+            <a href="/login" className="button fit">
               Log In
             </a>
           </li>
@@ -185,7 +185,7 @@ export const LandingPage = () => {
             </p>
             <ul className="actions">
               <li>
-                <a href="generic.html" className="button next">
+                <a href="signup" className="button next">
                   Get Started
                 </a>
               </li>

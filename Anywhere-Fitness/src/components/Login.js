@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 
-const initialFormValues = {
+const initialState = {
   email: "",
   password: "",
   authentication: "",
 };
+const initialDisabled = true;
 
 export default function Login() {
-  const [formValues, setFormValues] = useState(initialFormValues);
+  const [userLogIn, setUserLogIn] = useState(initialState);
+  const [disabled, setDisabled] = useState(initialDisabled);
 
   const onChange = (evt) => {
-    setFormValues({
-      ...formValues,
+    setUserLogIn({
+      ...userLogIn,
       [evt.target.name]: evt.target.value,
     });
   };
@@ -23,41 +25,42 @@ export default function Login() {
   };
 
   return (
-      <form className="form container" onSubmit={onSubmit} >
-          <br></br>
-          <h1> Login </h1>
-          <div className="form-group inputs" >
-              <label>
-                  Email
-                  <input  
-                  name="email"
-                  type="email"
-                  value={formValues.email}
-                  onChange={onChange}
-                  placeholder="Type Email Here"
-                  />
-              </label>
-              <label>
-                  Password
-                  <input  
-                  name="password"
-                  type="password"
-                  value={formValues.password}
-                  onChange={onChange}
-                  placeholder="Please Enter A Secure Password"
-                  />
-              </label>
-              <label>
-                  Authentication
-                  <input  
-                  name="authentication"
-                  type="authentication"
-                  value={formValues.authentication}
-                  onChange={onChange}
-                  placeholder="Instructor Authentication Here"
-                  />
-              </label>
-          </div>
-      </form>
-  )
+    <form className="form container" onSubmit={onSubmit}>
+      <br></br>
+      <h1> Login </h1>
+      <div className="form-group inputs">
+        <label>
+          Email
+          <input
+            name="email"
+            type="email"
+            value={userLogIn.email}
+            onChange={onChange}
+            placeholder="Type Email Here"
+          />
+        </label>
+        <label>
+          Password
+          <input
+            name="password"
+            type="password"
+            value={userLogIn.password}
+            onChange={onChange}
+            placeholder="Please Enter A Secure Password"
+          />
+        </label>
+        <label>
+          Authentication
+          <input
+            name="authentication"
+            type="authentication"
+            value={userLogIn.authentication}
+            onChange={onChange}
+            placeholder="Instructor Authentication Here"
+          />
+        </label>
+        <button disabled={disabled}>Login</button>
+      </div>
+    </form>
+  );
 }
