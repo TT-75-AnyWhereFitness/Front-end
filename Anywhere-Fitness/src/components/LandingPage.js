@@ -1,44 +1,14 @@
 import React from "react";
-// import {
-//   Route,
-//   Switch,
-//   useHistory,
-//   BrowserRouter as Router,
-// } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
+import styled from "styled-components";
 
 import "../assets/css/main.css";
+import Header from "./Header"
 
 export const LandingPage = () => {
   return (
     <div id="wrapper">
-      {/* <!-- Header --> */}
-      {/* <!-- Note: The "styleN" className below should match that of the banner element. --> */}
-      <header id="header" className="alt style2">
-        <nav>
-          <a href="#menu">Menu</a>
-        </nav>
-      </header>
-
-      {/* <!-- Menu --> */}
-      <nav id="menu">
-        <ul className="links">
-          <li>
-            <a href="##" className="button primary fit">
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="signup" className="button primary fit">
-              Get Started
-            </a>
-          </li>
-          <li>
-            <a href="/login" className="button fit">
-              Log In
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <Header />
 
       {/* <!-- Banner --> */}
       {/* <!-- Note: The "styleN" className below should match that of the header element. --> */}
@@ -149,7 +119,11 @@ export const LandingPage = () => {
           </section>
           <section>
             <a href="##" className="image">
-              <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=968&q=80" alt="" data-position="25% 25%" />
+              <img
+                src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=968&q=80"
+                alt=""
+                data-position="25% 25%"
+              />
             </a>
             <div className="content">
               <div className="inner">
@@ -309,3 +283,4 @@ export const LandingPage = () => {
 };
 
 export default LandingPage;
+
