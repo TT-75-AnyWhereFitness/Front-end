@@ -1,63 +1,120 @@
 import React, { useState } from "react";
-
-const initialFormValues = {
+import axios from "axios";
+const initialState = {
+  fName: "",
+  lName: "",
+  code: "",
   email: "",
   password: "",
-  authentication: "",
+  role: "",
 };
 
-export default function Signup() {
-  const [formValues, setFormValues] = useState(initialFormValues);
+const initialData = [];
+const initialDisabled = true;
+
+const Signup = () => {
+  const [userLogIn, setUserLogIn] = useState(initialState);
+  const [disabled, setDisabled] = useState(initialDisabled);
+  const [fitnessData, setFitnessData] = useState(initialData);
 
   const onChange = (evt) => {
-    setFormValues({
-      ...formValues,
-      [evt.target.name]: evt.target.value,
-    });
+    setUserLogIn({ ...userLogIn, [evt.target.name]: evt.target.value });
+    console.log(userLogIn);
   };
 
   const onSubmit = (evt) => {
-    evt.prevent.default();
-    // axios with auth here
-    // don't forget the post
+    evt.preventDefault();
+    const newUser = {
+      option: userLogIn.option,
+      fname: userLogIn.fName,
+      lName: userLogIn.lName,
+      email: userLogIn.email,
+      password: userLogIn.password,
+    };
+    axios
+      .post("https://reqres.in/api/users", newUser)
+      .then((res) => {
+        setFitnessData(res.data, ...fitnessData);
+        setUserLogIn(initialState);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
-      <form className="form container" onSubmit={onSubmit} >
-          <br></br>
-          <h1> Signup </h1>
-          <div className="form-group inputs" >
-              <label>
-                  Email
-                  <input  
-                  name="email"
-                  type="email"
-                  value={formValues.email}
-                  onChange={onChange}
-                  placeholder="Type Email Here"
-                  />
-              </label>
-              <label>
-                  Password
-                  <input  
-                  name="password"
-                  type="password"
-                  value={formValues.password}
-                  onChange={onChange}
-                  placeholder="Please Enter A Secure Password"
-                  />
-              </label>
-              <label>
-                  Authentication
-                  <input  
-                  name="authentication"
-                  type="authentication"
-                  value={formValues.authentication}
-                  onChange={onChange}
-                  placeholder="Instructor Authentication Here"
-                  />
-              </label>
-          </div>
+    <>
+      <form onSubmit={onSubmit}>
+        <label>
+          Client or Instructor?
+          <select id="role" name="role" onChange={onChange}>
+            <option value="">Choose option here</option>
+            <option value="client">Client</option>
+            <option value="instructor">Instructor</option>
+          </select>
+        </label>
+        <label>
+          First Name:
+          <input
+            name="name"
+            type="text"
+            value={userLogIn.fName}
+            onChange={onChange}
+          />
+        </label>
+        <label>
+          Last Name:
+          <input
+            name="name"
+            type="text"
+            value={userLogIn.lName}
+            onChange={onChange}
+          />
+        </label>
+        <label>
+          Email:
+          <input
+            name="email"
+            type="email"
+            value={userLogIn.email}
+            onChange={onChange}
+          />
+        </label>
+        <label>
+          Create a password:
+          <input
+            name="password"
+            type="password"
+            value={userLogIn.password}
+            onChange={onChange}
+          />
+        </label>
+        <label>
+          Code:
+          <input
+            name="code"
+            type="text"
+            value={userLogIn.code}
+            onChange={onChange}
+          />
+        </label>
+        {
+            userLogIn.role === "client" ? null : 
+            <label>
+          Code:
+          <input
+            name="code"
+            type="text"
+            value={userLogIn.code}
+            onChange={onChange}
+            />
+            </label>
+        }
+        <button disabled={disabled}>Submit</button>
+
       </form>
-  )
-}
+    </>
+  );
+};
+
+export default Signup;
