@@ -1,6 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import * as yup from "yup";
+import Schema from "../Schema";
 import axios from "axios";
 const initialState = {
+  fName: "",
+  lName: "",
+  code: "",
+  email: "",
+  password: "",
+  role: "",
+};
+
+const initialErrors = {
   fName: "",
   lName: "",
   code: "",
@@ -16,6 +27,7 @@ const Signup = () => {
   const [userLogIn, setUserLogIn] = useState(initialState);
   const [disabled, setDisabled] = useState(initialDisabled);
   const [fitnessData, setFitnessData] = useState(initialData);
+  const [formErrors, setFormErrors] = useState(initialErrors);
 
   const onChange = (evt) => {
     setUserLogIn({ ...userLogIn, [evt.target.name]: evt.target.value });
@@ -42,6 +54,25 @@ const Signup = () => {
       });
   };
 
+  const inputChange = (name, value) => {
+    yup
+      .reach(Schema, name)
+      .validate(value)
+      .then(() => {
+        setFormErrors({ ...formErrors, [name]: "" });
+      })
+      .catch((err) => {
+        setFormErrors({ ...formErrors, [name]: err.errors[0] });
+      });
+    setUserLogIn({
+      ...userLogIn,
+      [name]: value,
+    });
+  };
+
+  useEffect(() => {
+    Schema.isValid(userLogIn).then((valid) => setDisabled(!valid));
+  }, [userLogIn]);
   return (
     <>
       <form onSubmit={onSubmit}>
@@ -98,20 +129,18 @@ const Signup = () => {
             onChange={onChange}
           />
         </label>
-        {
-            userLogIn.role === "client" ? null : 
-            <label>
-          Code:
-          <input
-            name="code"
-            type="text"
-            value={userLogIn.code}
-            onChange={onChange}
+        {userLogIn.role === "client" ? null : (
+          <label>
+            Code:
+            <input
+              name="code"
+              type="text"
+              value={userLogIn.code}
+              onChange={onChange}
             />
-            </label>
-        }
+          </label>
+        )}
         <button disabled={disabled}>Submit</button>
-
       </form>
     </>
   );

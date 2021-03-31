@@ -1,72 +1,78 @@
-import React, { useState } from "react";
-import axios from "axios"
-import { useHistory } from "react-router-dom";
-import axiosWithAuth from "../utils/axiosWithAuth"
-
+import React, { useState, useEffect } from "react";
+import * as yup from "yup";
+import Schema from "../Schema";
 
 const initialState = {
   email: "",
   password: "",
-  authentication: "",
 };
+
+const initialErrors = {
+  email: "",
+  password: "",
+};
+
 const initialDisabled = true;
 
-export default function Login() {
+const Login = () => {
   const [userLogIn, setUserLogIn] = useState(initialState);
   const [disabled, setDisabled] = useState(initialDisabled);
-  const history = useHistory()
+  const [formErrors, setFormErrors] = useState(initialErrors);
 
   const onChange = (evt) => {
+    setUserLogIn({ ...userLogIn, [evt.target.name]: evt.target.value });
+    console.log(userLogIn);
+  };
+  const onSubmit = (evt) => {
+    evt.preventDefault();
+  };
+
+  const inputChange = (name, value) => {
+    yup
+      .reach(Schema, name)
+      .validate(value)
+      .then(() => {
+        setFormErrors({ ...formErrors, [name]: "" });
+      })
+      .catch((err) => {
+        setFormErrors({ ...formErrors, [name]: err.errors[0] });
+      });
     setUserLogIn({
       ...userLogIn,
-      [evt.target.name]: evt.target.value,
+      [name]: value,
     });
   };
 
-  const onSubmit = (evt) => {
-    evt.prevent.default();
-    // axios with auth here
-    // don't forget the post
-    history.push("/")
-  };
+  useEffect(() => {
+    Schema.isValid(userLogIn).then((valid) => setDisabled(!valid));
+  }, [userLogIn]);
 
   return (
-    <form className="form container" onSubmit={onSubmit}>
-      <br></br>
-      <h1> Login </h1>
-      <div className="form-group inputs">
+    <div>
+      <form onSubmit={onSubmit}>
         <label>
-          Email
+          Email:
           <input
             name="email"
             type="email"
             value={userLogIn.email}
             onChange={onChange}
-            placeholder="Type Email Here"
           />
         </label>
         <label>
-          Password
+          Password:
           <input
             name="password"
             type="password"
             value={userLogIn.password}
             onChange={onChange}
-            placeholder="Please Enter A Secure Password"
           />
         </label>
-        <label>
-          Authentication
-          <input
-            name="authentication"
-            type="authentication"
-            value={userLogIn.authentication}
-            onChange={onChange}
-            placeholder="Instructor Authentication Here"
-          />
-        </label>
+
         <button disabled={disabled}>Login</button>
-      </div>
-    </form>
+      </form>
+    </div>
   );
-}
+};
+
+export default Login;
