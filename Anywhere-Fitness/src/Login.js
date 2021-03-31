@@ -3,7 +3,7 @@ import React, { useState} from 'react'
 const initialState = {
     email:"",
     password:"",
-    authentication:"",
+   
 
 }
 const initialDisabled = true;
@@ -43,15 +43,7 @@ const Login = () => {
                     onChange={onChange}       
                     />
                 </label>
-                <label>
-                   Authentication:
-                    <input
-                    name="authentication"
-                    type="text"
-                    value={userLogIn.authentication}
-                    onChange={onChange}
-                    />
-                </label>
+                
                 <button disabled={disabled}>Login</button>
             </form>
         </div>
