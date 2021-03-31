@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
-import Schema from "../Schema";
+
+import Schema from "./Schema";
+import Header from "./Header";
 
 const initialState = {
   email: "",
@@ -49,6 +51,9 @@ const Login = () => {
 
   return (
     <div>
+      <Header />
+      <br></br>
+      <br></br>
       <form onSubmit={onSubmit}>
         <label>
           Email:
