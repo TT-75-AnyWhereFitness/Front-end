@@ -46,10 +46,10 @@ const Signup = () => {
 
   return (
     <div>
-        <Header />
-        <br></br>
-        <br></br>
-        <br></br>
+      <Header />
+      <br></br>
+      <br></br>
+      <br></br>
 
       <form onSubmit={onSubmit}>
         <label>
@@ -105,20 +105,18 @@ const Signup = () => {
             onChange={onChange}
           />
         </label>
-        {
-            userLogIn.role === "client" ? null : 
-            <label>
-          Code:
-          <input
-            name="code"
-            type="text"
-            value={userLogIn.code}
-            onChange={onChange}
+        {userLogIn.role === "client" ? null : (
+          <label>
+            Code:
+            <input
+              name="code"
+              type="text"
+              value={userLogIn.code}
+              onChange={onChange}
             />
-            </label>
-        }
+          </label>
+        )}
         <button disabled={disabled}>Submit</button>
-
       </form>
     </div>
   );

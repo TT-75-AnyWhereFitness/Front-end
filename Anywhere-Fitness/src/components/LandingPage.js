@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import axios from "axios"
+import axios from "axios";
 
 import "../assets/css/main.css";
 import Header from "./Header";
@@ -11,17 +11,17 @@ import {
   Spotlights,
   Contact,
   Footer,
-} from "./HomeComponents";
+} from "./LandingPageComponents";
 
 export const LandingPage = () => {
   axios
-  .get("https://tt75-anywhere-fitness.herokuapp.com/")
-  .then((res) => {
-    console.log("res",res)
-  })
-  .catch((error) => {
-    console.log("AXIOS ERROR", error)
-  })
+    .get("https://tt75-anywhere-fitness.herokuapp.com/")
+    .then((res) => {
+      console.log("res", res);
+    })
+    .catch((error) => {
+      console.log("AXIOS ERROR", error);
+    });
   return (
     <div id="wrapper">
       <Header />

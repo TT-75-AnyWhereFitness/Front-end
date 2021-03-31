@@ -7,7 +7,6 @@ import Header from "./Header";
 const initialState = {
   email: "",
   password: "",
-  code: "",
 };
 const initialDisabled = true;
 
@@ -27,7 +26,7 @@ export default function Login() {
     evt.prevent.default();
     // axios with auth here
     // don't forget the post
-    history.push("/");
+    history.push("/home");
   };
 
   return (
@@ -55,16 +54,6 @@ export default function Login() {
               value={userLogIn.password}
               onChange={onChange}
               placeholder="Please Enter A Secure Password"
-            />
-          </label>
-          <label>
-            Code
-            <input
-              name="code"
-              type="text"
-              value={userLogIn.code}
-              onChange={onChange}
-              placeholder="Instructor Authentication Here"
             />
           </label>
           <button disabled={disabled}>Login</button>
