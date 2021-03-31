@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
-import Schema from "../Schema";
+import Schema from "./Schema";
 import axios from "axios";
 const initialState = {
   fName: "",
