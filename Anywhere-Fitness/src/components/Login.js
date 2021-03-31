@@ -7,7 +7,7 @@ import axiosWithAuth from "../utils/axiosWithAuth"
 const initialState = {
   email: "",
   password: "",
-  authentication: "",
+  code: "",
 };
 const initialDisabled = true;
 
@@ -56,11 +56,11 @@ export default function Login() {
           />
         </label>
         <label>
-          Authentication
+          Code
           <input
-            name="authentication"
-            type="authentication"
-            value={userLogIn.authentication}
+            name="code"
+            type="text"
+            value={userLogIn.code}
             onChange={onChange}
             placeholder="Instructor Authentication Here"
           />
