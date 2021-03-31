@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import axios from "axios"
+import { useHistory } from "react-router-dom";
+import axiosWithAuth from "../utils/axiosWithAuth"
+
 
 const initialState = {
   email: "",
@@ -10,6 +14,7 @@ const initialDisabled = true;
 export default function Login() {
   const [userLogIn, setUserLogIn] = useState(initialState);
   const [disabled, setDisabled] = useState(initialDisabled);
+  const history = useHistory()
 
   const onChange = (evt) => {
     setUserLogIn({
@@ -22,6 +27,7 @@ export default function Login() {
     evt.prevent.default();
     // axios with auth here
     // don't forget the post
+    history.push("/")
   };
 
   return (
