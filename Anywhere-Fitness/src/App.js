@@ -1,16 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
-import Login from './Login';
-import Signup from "./Signup"
-
-
+import React from "react";
+import { Route, Switch, useHistory } from "react-router-dom";
+import LandingPage from "./components/LandingPage";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import Home from "./components/Auth/Home"
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-    <Login/>
-    <Signup/>
-      </header>
+    <div>
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/home" component={Home} />
+        <Route exact path="/" component={LandingPage} />
+      </Switch>
     </div>
   );
 }
