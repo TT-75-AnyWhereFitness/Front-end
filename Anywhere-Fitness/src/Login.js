@@ -25,6 +25,7 @@ const Login = () => {
 
 
     const onChange = (evt) => {
+        inputChange(evt.target.name,evt.target.value)
      setUserLogIn({...userLogIn, [evt.target.name]:evt.target.value} ) 
      console.log(userLogIn)
     }
@@ -42,10 +43,10 @@ const Login = () => {
               .catch((err) => {
                 setFormErrors({ ...formErrors, [name]: err.errors[0] });
               });
-            setUserLogIn({
-              ...userLogIn,
-              [name]: value,
-            });
+            // setUserLogIn({
+            //   ...userLogIn,
+            //   [name]: value,
+            // });
           };
         
           useEffect(() => {

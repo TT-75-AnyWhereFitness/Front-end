@@ -11,7 +11,7 @@ const Schema = yup.object().shape({
     .required("Must include a name.")
     .min(2, "Must include at least 2 characters."),
     password: yup 
-    .password(),
+    .string().password(),
     email:yup
     .string().email(),
 })

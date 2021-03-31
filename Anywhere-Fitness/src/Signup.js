@@ -30,6 +30,7 @@ const Signup = () => {
   const [formErrors, setFormErrors] = useState(initialErrors);
 
   const onChange = (evt) => {
+    inputChange(evt.target.name, evt.target.value)
     setUserLogIn({ ...userLogIn, [evt.target.name]: evt.target.value });
     console.log(userLogIn);
   };
@@ -64,10 +65,10 @@ const Signup = () => {
       .catch((err) => {
         setFormErrors({ ...formErrors, [name]: err.errors[0] });
       });
-    setUserLogIn({
-      ...userLogIn,
-      [name]: value,
-    });
+    // setUserLogIn({
+    //   ...userLogIn,
+    //   [name]: value,
+    // });
   };
 
   useEffect(() => {
