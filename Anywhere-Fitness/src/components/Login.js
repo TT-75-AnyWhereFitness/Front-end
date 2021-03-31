@@ -1,78 +1,84 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 import * as yup from "yup";
-import Schema from "../Schema";
+import Schema from "./Schema"
 
 const initialState = {
-  email: "",
-  password: "",
-};
+    email:"",
+    password:"",
+
+}
 
 const initialErrors = {
-  email: "",
-  password: "",
-};
+    email:"",
+    password:"",
+}
 
 const initialDisabled = true;
 
 const Login = () => {
-  const [userLogIn, setUserLogIn] = useState(initialState);
-  const [disabled, setDisabled] = useState(initialDisabled);
-  const [formErrors, setFormErrors] = useState(initialErrors);
+    
+    
+    
+    const [userLogIn, setUserLogIn] = useState(initialState);
+    const [disabled, setDisabled] = useState(initialDisabled)
+    const [formErrors, setFormErrors] = useState(initialErrors);
 
-  const onChange = (evt) => {
-    setUserLogIn({ ...userLogIn, [evt.target.name]: evt.target.value });
-    console.log(userLogIn);
-  };
-  const onSubmit = (evt) => {
-    evt.preventDefault();
-  };
 
-  const inputChange = (name, value) => {
-    yup
-      .reach(Schema, name)
-      .validate(value)
-      .then(() => {
-        setFormErrors({ ...formErrors, [name]: "" });
-      })
-      .catch((err) => {
-        setFormErrors({ ...formErrors, [name]: err.errors[0] });
-      });
-    setUserLogIn({
-      ...userLogIn,
-      [name]: value,
-    });
-  };
+    const onChange = (evt) => {
+        inputChange(evt.target.name,evt.target.value)
+     setUserLogIn({...userLogIn, [evt.target.name]:evt.target.value} ) 
+     console.log(userLogIn)
+    }
+    const onSubmit = (evt) => {
+        evt.preventDefault();}
+    
 
-  useEffect(() => {
-    Schema.isValid(userLogIn).then((valid) => setDisabled(!valid));
-  }, [userLogIn]);
+        const inputChange = (name, value) => {
+            yup
+              .reach(Schema, name)
+              .validate(value)
+              .then(() => {
+                setFormErrors({ ...formErrors, [name]: "" });
+              })
+              .catch((err) => {
+                setFormErrors({ ...formErrors, [name]: err.errors[0] });
+              });
+            // setUserLogIn({
+            //   ...userLogIn,
+            //   [name]: value,
+            // });
+          };
+        
+          useEffect(() => {
+            Schema.isValid(userLogIn).then((valid) => setDisabled(!valid));
+          }, [userLogIn]);
 
-  return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <label>
-          Email:
-          <input
-            name="email"
-            type="email"
-            value={userLogIn.email}
-            onChange={onChange}
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            name="password"
-            type="password"
-            value={userLogIn.password}
-            onChange={onChange}
-          />
-        </label>
+    return (
+        <div>
+            <form onSubmit={onSubmit}>
+                <label>
+                    Email:
+                    <input
+                    name="email"
+                    type="email"
+                    value={userLogIn.email}
+                    onChange={onChange}
+                    />
+                </label>
+                <label>
+                    Password:
+                    <input
+                    name="password"
+                    type="password"
+                    value={userLogIn.password}
+                    onChange={onChange}       
+                    />
+                </label>
+                
+                <button disabled={disabled}>Login</button>
+            </form>
+        </div>
+    )
+}
 
-        <button disabled={disabled}>Login</button>
-      </form>
-    </div>
-  );
-};
-
-export default Login;
+export default Login
