@@ -14,7 +14,14 @@ import {
 } from "./HomeComponents";
 
 export const LandingPage = () => {
-
+  axios
+  .get("https://tt75-anywhere-fitness.herokuapp.com/")
+  .then((res) => {
+    console.log("res",res)
+  })
+  .catch((error) => {
+    console.log("AXIOS ERROR", error)
+  })
   return (
     <div id="wrapper">
       <Header />

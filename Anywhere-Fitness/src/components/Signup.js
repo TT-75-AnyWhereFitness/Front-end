@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Header from "./Header";
+
 const initialState = {
   fName: "",
   lName: "",
@@ -43,7 +45,12 @@ const Signup = () => {
   };
 
   return (
-    <>
+    <div>
+        <Header />
+        <br></br>
+        <br></br>
+        <br></br>
+
       <form onSubmit={onSubmit}>
         <label>
           Client or Instructor?
@@ -113,7 +120,7 @@ const Signup = () => {
         <button disabled={disabled}>Submit</button>
 
       </form>
-    </>
+    </div>
   );
 };
 
