@@ -1,11 +1,18 @@
-import React, { useState} from 'react'
+import React, { useState, useEffect } from 'react'
+import * as yup from "yup";
+import Schema from "./Schema"
 
 const initialState = {
     email:"",
     password:"",
-   
 
 }
+
+const initialErrors = {
+    email:"",
+    password:"",
+}
+
 const initialDisabled = true;
 
 const Login = () => {
@@ -14,7 +21,9 @@ const Login = () => {
     
     const [userLogIn, setUserLogIn] = useState(initialState);
     const [disabled, setDisabled] = useState(initialDisabled)
-    
+    const [formErrors, setFormErrors] = useState(initialErrors);
+
+
     const onChange = (evt) => {
      setUserLogIn({...userLogIn, [evt.target.name]:evt.target.value} ) 
      console.log(userLogIn)
@@ -22,6 +31,27 @@ const Login = () => {
     const onSubmit = (evt) => {
         evt.preventDefault();}
     
+
+        const inputChange = (name, value) => {
+            yup
+              .reach(Schema, name)
+              .validate(value)
+              .then(() => {
+                setFormErrors({ ...formErrors, [name]: "" });
+              })
+              .catch((err) => {
+                setFormErrors({ ...formErrors, [name]: err.errors[0] });
+              });
+            setUserLogIn({
+              ...userLogIn,
+              [name]: value,
+            });
+          };
+        
+          useEffect(() => {
+            Schema.isValid(userLogIn).then((valid) => setDisabled(!valid));
+          }, [userLogIn]);
+
     return (
         <div>
             <form onSubmit={onSubmit}>

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import * as yup from "yup";
+import Schema from "./Schema"
 import axios from "axios";
 const initialState = {
   fName: "",
@@ -9,6 +11,15 @@ const initialState = {
   role: "",
 };
 
+const initialErrors = {
+    fName: "",
+    lName: "",
+    code: "",
+    email: "",
+    password: "",
+    role: "",
+}
+
 const initialData = [];
 const initialDisabled = true;
 
@@ -16,6 +27,7 @@ const Signup = () => {
   const [userLogIn, setUserLogIn] = useState(initialState);
   const [disabled, setDisabled] = useState(initialDisabled);
   const [fitnessData, setFitnessData] = useState(initialData);
+  const [formErrors, setFormErrors] = useState(initialErrors);
 
   const onChange = (evt) => {
     setUserLogIn({ ...userLogIn, [evt.target.name]: evt.target.value });
@@ -42,6 +54,25 @@ const Signup = () => {
       });
   };
 
+  const inputChange = (name, value) => {
+    yup
+      .reach(Schema, name)
+      .validate(value)
+      .then(() => {
+        setFormErrors({ ...formErrors, [name]: "" });
+      })
+      .catch((err) => {
+        setFormErrors({ ...formErrors, [name]: err.errors[0] });
+      });
+    setUserLogIn({
+      ...userLogIn,
+      [name]: value,
+    });
+  };
+
+  useEffect(() => {
+    Schema.isValid(userLogIn).then((valid) => setDisabled(!valid));
+  }, [userLogIn]);
   return (
     <>
       <form onSubmit={onSubmit}>
