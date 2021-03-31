@@ -9,9 +9,9 @@ const Header = () => {
     return (
         <div>
                <Headerer >
-        <h1>
+        <h2>
           <NavLink to="/">ANYWHERE FITNESS</NavLink>
-        </h1>
+        </h2>
         <HeaderNav >
                 <ul>
                   <li>
