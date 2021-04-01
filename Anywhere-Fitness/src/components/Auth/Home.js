@@ -9,7 +9,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get("https://tt75-anywhere-fitness.herokuapp.com/api/classes")
+      .get("https://tt75-anywhere-fitness.herokuapp.com/api/users")
       .then((res) => {
         console.log("res.data", res.data);
       })

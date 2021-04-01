@@ -6,29 +6,30 @@ import Schema from "./Schema";
 import Header from "./Header";
 
 const initialState = {
-  fName: "",
-  lName: "",
-  code: "",
+  first_name: "",
+  last_name: "",
+  // code: "",
+  username: "",
   email: "",
   password: "",
   role: "",
 };
 
 const initialErrors = {
-  fName: "",
-  lName: "",
-  code: "",
+  first_name: "",
+  last_name: "",
+  username: "",
+  // code: "",
   email: "",
   password: "",
   role: "",
 };
 
 const initialData = [];
-const initialDisabled = true;
 
 const Signup = () => {
   const [userLogIn, setUserLogIn] = useState(initialState);
-  const [disabled, setDisabled] = useState(initialDisabled);
+  // const [disabled, setDisabled] = useState(true);
   const [fitnessData, setFitnessData] = useState(initialData);
   const [formErrors, setFormErrors] = useState(initialErrors);
 
@@ -39,17 +40,14 @@ const Signup = () => {
 
   const onSubmit = (evt) => {
     evt.preventDefault();
-    const newUser = {
-      option: userLogIn.option,
-      fname: userLogIn.fName,
-      lName: userLogIn.lName,
-      email: userLogIn.email,
-      password: userLogIn.password,
-    };
     axios
-      .post("https://tt75-anywhere-fitness.herokuapp.com/api/users", newUser)
+      .post(
+        "https://tt75-anywhere-fitness.herokuapp.com/api/auth/register",
+        userLogIn
+      )
       .then((res) => {
         setFitnessData(res.data, ...fitnessData);
+        console.log(res);
         setUserLogIn(initialState);
       })
       .catch((err) => {
@@ -73,9 +71,9 @@ const Signup = () => {
     });
   };
 
-  useEffect(() => {
-    Schema.isValid(userLogIn).then((valid) => setDisabled(!valid));
-  }, [userLogIn]);
+  // useEffect(() => {
+  //   Schema.isValid(userLogIn).then((valid) => setDisabled(!valid));
+  // }, [userLogIn]);
   return (
     <>
       <Header />
@@ -93,18 +91,27 @@ const Signup = () => {
         <label>
           First Name:
           <input
-            name="name"
+            name="first_name"
             type="text"
-            value={userLogIn.fName}
+            value={userLogIn.first_name}
             onChange={onChange}
           />
         </label>
         <label>
           Last Name:
           <input
-            name="name"
+            name="last_name"
             type="text"
-            value={userLogIn.lName}
+            value={userLogIn.last_name}
+            onChange={onChange}
+          />
+        </label>
+        <label>
+          UserName:
+          <input
+            name="username"
+            type="text"
+            value={userLogIn.username}
             onChange={onChange}
           />
         </label>
@@ -126,7 +133,7 @@ const Signup = () => {
             onChange={onChange}
           />
         </label>
-        <label>
+        {/* <label>
           Code:
           <input
             name="code"
@@ -134,8 +141,8 @@ const Signup = () => {
             value={userLogIn.code}
             onChange={onChange}
           />
-        </label>
-        {userLogIn.role === "client" ? null : (
+        </label> */}
+        {/* {userLogIn.role === "client" ? null : (
           <label>
             Code:
             <input
@@ -145,8 +152,8 @@ const Signup = () => {
               onChange={onChange}
             />
           </label>
-        )}
-        <button disabled={disabled}>Submit</button>
+        )} */}
+        <button /*disabled={disabled}*/>Submit</button>
       </form>
     </>
   );
