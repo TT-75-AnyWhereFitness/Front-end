@@ -1,19 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const initialState = {
-    name: "",
-    type: "",
-    startTime: "",
-    duration: "",
-    intensity: "",
-    location: "",
-    attendees:"",
-    size:"",
-  };
+  name: "",
+  instructor_username: "",
+  type: "",
+  date: "",
+  start_time: "",
+  duration: "",
+  intensity_level: "",
+  location: "",
+  attendees: null,
+  max_size: null,
+};
 
 const Classform = () => {
+  const [classInfo, setClassInfo] = useState(initialState);
 
-const [classInfo, setClassInfo] = useState(initialState)
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
+  //onChange Event
+  const onChange = (evt) => {
+    setClassInfo({ ...classInfo, [evt.target.name]: evt.target.value });
+  };
 
   return (
     <>
@@ -40,9 +49,9 @@ const [classInfo, setClassInfo] = useState(initialState)
         <label>
           Start time:
           <input
-            name="startTime"
+            name="time"
             type="text"
-            value={classInfo.startTime}
+            value={classInfo.time}
             onChange={onChange}
           />
         </label>
@@ -61,7 +70,7 @@ const [classInfo, setClassInfo] = useState(initialState)
           <input
             name="intensity"
             type="text"
-            value={classInfo.intensity}
+            value={classInfo.intensity_level}
             onChange={onChange}
           />
         </label>
@@ -79,7 +88,7 @@ const [classInfo, setClassInfo] = useState(initialState)
           Current registered attendees:
           <input
             name="attendees"
-            type="text"
+            type="number"
             value={classInfo.attendees}
             onChange={onChange}
           />
@@ -88,8 +97,8 @@ const [classInfo, setClassInfo] = useState(initialState)
           Max class size:
           <input
             name="size"
-            type="text"
-            value={classInfo.size}
+            type="number"
+            value={classInfo.max_size}
             onChange={onChange}
           />
         </label>

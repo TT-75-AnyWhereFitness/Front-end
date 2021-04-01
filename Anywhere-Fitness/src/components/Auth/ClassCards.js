@@ -9,12 +9,17 @@ const Class = (props) => {
     <div className="card">
       <div className="card-body">
         <h3 className="card-title">{card.name}</h3>
+
+        <p className="card-text">
+          <b>Instructor:</b> {card.instructor_username}
+        </p>
+
         <p className="card-text">
           <b>Type:</b> {card.type}
         </p>
 
         <p className="card-text">
-          <b>Time:</b> {card.time}
+          <b>Time:</b> {card.start_time}
         </p>
 
         <p className="card-text">
@@ -26,7 +31,7 @@ const Class = (props) => {
         </p>
 
         <p className="card-text">
-          <b>Intensity:</b> {card.intensity}
+          <b>Intensity:</b> {card.intensity_level}
         </p>
 
         <p className="card-text">
@@ -34,11 +39,15 @@ const Class = (props) => {
         </p>
 
         <p className="card-text">
-          <b>Current Attending:</b> {card.currentSize}
+          <b>Current Attending:</b> {card.attendees}
         </p>
 
         <p className="card-text">
-          <b>Max Class Size:</b> {card.maxSize}
+          <b>Number RSVP'ed:</b> {card.numRSVP}
+        </p>
+
+        <p className="card-text">
+          <b>Max Class Size:</b> {card.max_size}
         </p>
       </div>
     </div>

@@ -3,10 +3,21 @@ import axios from "axios"; // with auth?
 import Dropdown from "react-dropdown";
 import Header from "../Header";
 
-
 const Home = () => {
   const [search, setSearch] = useState({ query: "", item: "" }); // SEARCH CLASSES
   const options = ["time", "date", "duration", "type", "intensity", "location"];
+
+  useEffect(() => {
+    axios
+      .get("https://tt75-anywhere-fitness.herokuapp.com/api/classes")
+      .then((res) => {
+        console.log("res.data", res.data);
+      })
+      .catch((error) => {
+        console.log("Home axios error", error);
+      });
+  }, []);
+
   return (
     <div className="container">
       <Header />
@@ -16,7 +27,7 @@ const Home = () => {
 
       <form>
         <label>
-            Select an Option
+          Select an Option
           <Dropdown
             options={options}
             // onChange={onChange}
@@ -25,9 +36,9 @@ const Home = () => {
           />
         </label>
       </form>
-      {/* MAP CLASSES */ }
+      {/* MAP CLASSES */}
     </div>
   );
 };
 
-export default Home
+export default Home;

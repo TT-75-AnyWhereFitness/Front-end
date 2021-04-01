@@ -47,7 +47,7 @@ const Signup = () => {
       password: userLogIn.password,
     };
     axios
-      .post("https://reqres.in/api/users", newUser)
+      .post("https://tt75-anywhere-fitness.herokuapp.com/api/users", newUser)
       .then((res) => {
         setFitnessData(res.data, ...fitnessData);
         setUserLogIn(initialState);
