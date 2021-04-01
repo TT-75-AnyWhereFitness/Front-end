@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
-import Schema from "../Schema";
 import axios from "axios";
+
+import Schema from "./Schema";
+import Header from "./Header";
+
 const initialState = {
   fName: "",
   lName: "",
@@ -75,6 +78,9 @@ const Signup = () => {
   }, [userLogIn]);
   return (
     <>
+      <Header />
+      <br></br>
+      <br></br>
       <form onSubmit={onSubmit}>
         <label>
           Client or Instructor?
