@@ -2,7 +2,7 @@ import React from "react";
 
 // NEEDS PROPS FROM HOME TO MAKE CARDS FOR CLASSES
 
-const Class = (props) => {
+const Lesson = (props) => {
   const { card } = props;
 
   return (
@@ -54,7 +54,7 @@ const Class = (props) => {
   );
 };
 
-export default Class;
+export default Lesson;
 
 /* NEEDS TO DISPLAY:
     "time", "date", "duration", "type", "intensity", "location"

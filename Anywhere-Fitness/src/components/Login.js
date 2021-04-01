@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+
 // import * as yup from "yup";
 import axios from "axios";
 
@@ -19,6 +21,7 @@ const initialState = {
 
 const Login = () => {
   const [userLogIn, setUserLogIn] = useState(initialState);
+  const history = useHistory();
   // const [disabled, setDisabled] = useState(initialDisabled);
   // const [formErrors, setFormErrors] = useState(initialErrors);
 
@@ -36,6 +39,7 @@ const Login = () => {
       .then((res) => {
         console.log(res);
         setUserLogIn(initialState);
+        history.push("/home")
       })
       .catch((err) => {
         console.log(err);
