@@ -38,13 +38,13 @@ const Headerer = styled.header`
   -ms-transition: background-color 0.2s ease;
   transition: background-color 0.2s ease;
   background: #2e3842;
-  background: transparent;
-  height: 3em;
-  left: 1%;
+  /* background: transparent; */
+  height: 6em;
+  left: 0.25%;
   line-height: 2em;
   position: fixed;
   top: 0;
-  width: 98%;
+  width: 99.4%;
   z-index: 10000;
 `;
 

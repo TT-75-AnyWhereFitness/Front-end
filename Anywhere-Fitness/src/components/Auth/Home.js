@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios"; // with auth?
-import Dropdown from "react-dropdown";
 import Header from "../Header";
-import Lesson from "./ClassCards"
+import Lesson from "./ClassCards";
 
 const Home = () => {
   const [search, setSearch] = useState({ query: "", item: "" }); // SEARCH CLASSES
   const options = ["time", "date", "duration", "type", "intensity", "location"];
-  const [card, setCard] = useState([])
+  const [card, setCard] = useState([]);
   useEffect(() => {
     axios
       .get("https://tt75-anywhere-fitness.herokuapp.com/api/classes")
       .then((res) => {
-       setCard(...card, res.data)
+        setCard(res.data);
         console.log("res.data", res.data);
+        console.log("card", card);
       })
       .catch((error) => {
         console.log("Home axios error", error);
@@ -23,6 +23,7 @@ const Home = () => {
   return (
     <div className="container">
       <Header />
+      <br></br>
       <br></br>
       <br></br>
       <br></br>
@@ -38,10 +39,10 @@ const Home = () => {
           />
         </label> 
       </form> */}
-      <Lesson card={card}  />
-      {/* {lessons.map((lesson, id) => (
-        <Lesson lesson={lesson}  />
-      ))} */}
+
+      {card.map((card) => {
+        return <Lesson card={card} />;
+      })}
     </div>
   );
 };
