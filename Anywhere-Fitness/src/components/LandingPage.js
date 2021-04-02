@@ -3,7 +3,6 @@ import React from "react";
 import axios from "axios";
 
 import "../assets/css/main.css";
-import Header from "./Header";
 import {
   Banner,
   Section1,
@@ -25,7 +24,6 @@ export const LandingPage = () => {
     });
   return (
     <div id="wrapper">
-      <Header />
 
       <Banner />
 

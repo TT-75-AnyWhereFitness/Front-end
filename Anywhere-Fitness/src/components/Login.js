@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 // import Schema from "./Schema";
-import Header from "./Header";
 
 const initialState = {
   username: "",
@@ -37,6 +36,7 @@ const Login = () => {
         userLogIn
       )
       .then((res) => {
+        // if(userLogIn)
         console.log(res);
         setUserLogIn(initialState);
         history.push("/home")
@@ -68,7 +68,8 @@ const Login = () => {
 
   return (
     <div>
-      <Header />
+      <br></br>
+      <br></br>
       <br></br>
       <br></br>
       <form onSubmit={onSubmit}>

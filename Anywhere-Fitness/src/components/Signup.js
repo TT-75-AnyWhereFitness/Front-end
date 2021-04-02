@@ -3,7 +3,6 @@ import * as yup from "yup";
 import axios from "axios";
 
 import Schema from "./Schema";
-import Header from "./Header";
 
 const initialState = {
   first_name: "",
@@ -76,7 +75,6 @@ const Signup = () => {
   // }, [userLogIn]);
   return (
     <>
-      <Header />
       <br></br>
       <br></br>
       <form onSubmit={onSubmit}>

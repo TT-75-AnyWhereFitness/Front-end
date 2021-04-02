@@ -33,11 +33,11 @@ export default Header
 
 
 const Headerer = styled.header`
-  -moz-transition: background-color 0.2s ease;
+  /* -moz-transition: background-color 0.2s ease;
   -webkit-transition: background-color 0.2s ease;
   -ms-transition: background-color 0.2s ease;
-  transition: background-color 0.2s ease;
-  background: #2e3842;
+  transition: background-color 0.2s ease; */
+  /* background: #2e3842; */
   /* background: transparent; */
   height: 6em;
   left: 0.25%;

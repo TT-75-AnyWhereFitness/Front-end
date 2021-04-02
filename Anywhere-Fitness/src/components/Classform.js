@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const initialState = {
   name: "",
@@ -6,33 +7,55 @@ const initialState = {
   type: "",
   date: "",
   start_time: "",
-  duration: "",
+  duration: 0,
   intensity_level: "",
   location: "",
-  attendees: null,
-  max_size: null,
+  attendees: 0,
+  max_size: 0,
 };
 
 const Classform = () => {
   const [classInfo, setClassInfo] = useState(initialState);
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const addLesson = () => {
+    axios
+      .post(
+        `https://tt75-anywhere-fitness.herokuapp.com/api/classes/`,
+        classInfo
+      )
+      .then((res) => {
+        console.log("res: ", res);
+        setClassInfo(initialState);
+      })
+      .catch((error) => {
+        console.log("error: ", error);
+      });
   };
+
   //onChange Event
+
   const onChange = (evt) => {
     setClassInfo({ ...classInfo, [evt.target.name]: evt.target.value });
   };
 
   return (
     <>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={addLesson}>
         <label>
           Name:
           <input
             name="name"
             type="text"
             value={classInfo.name}
+            onChange={onChange}
+          />
+        </label>
+        <label>
+          Instructor:
+          <input
+            name="instructor_username"
+            type="text"
+            value={classInfo.instructor_username}
             onChange={onChange}
           />
         </label>
@@ -47,11 +70,21 @@ const Classform = () => {
         </label>
 
         <label>
+          Date
+          <input
+            name="date"
+            type="text"
+            value={classInfo.date}
+            onChange={onChange}
+          />
+        </label>
+
+        <label>
           Start time:
           <input
-            name="time"
+            name="start_time"
             type="text"
-            value={classInfo.time}
+            value={classInfo.start_time}
             onChange={onChange}
           />
         </label>
@@ -68,7 +101,7 @@ const Classform = () => {
         <label>
           Intensity level:
           <input
-            name="intensity"
+            name="intensity_level"
             type="text"
             value={classInfo.intensity_level}
             onChange={onChange}
@@ -88,7 +121,7 @@ const Classform = () => {
           Current registered attendees:
           <input
             name="attendees"
-            type="number"
+            type="text"
             value={classInfo.attendees}
             onChange={onChange}
           />
@@ -96,12 +129,13 @@ const Classform = () => {
         <label>
           Max class size:
           <input
-            name="size"
-            type="number"
+            name="max_size"
+            type="text"
             value={classInfo.max_size}
             onChange={onChange}
           />
         </label>
+        <button onClick={addLesson}>SUBMIT CLASS</button>
       </form>
     </>
   );
