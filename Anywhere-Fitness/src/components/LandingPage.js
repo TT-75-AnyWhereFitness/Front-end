@@ -11,7 +11,7 @@ import {
   Contact,
   Footer,
 } from "./LandingPageComponents";
-import axiosWithAuth from "../utils/axiosWithAuth"
+// import axiosWithAuth from "../utils/axiosWithAuth"
 
 export const LandingPage = () => {
   axios

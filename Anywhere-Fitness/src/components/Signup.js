@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import * as yup from "yup";
+import React, { useState } from "react";
+// import * as yup from "yup";
 import axios from "axios";
 
-import Schema from "./Schema";
+// import Schema from "./Schema";
 
 const initialState = {
   first_name: "",
@@ -14,15 +14,15 @@ const initialState = {
   role: "",
 };
 
-const initialErrors = {
-  first_name: "",
-  last_name: "",
-  username: "",
-  // code: "",
-  email: "",
-  password: "",
-  role: "",
-};
+// const initialErrors = {
+//   first_name: "",
+//   last_name: "",
+//   username: "",
+//   // code: "",
+//   email: "",
+//   password: "",
+//   role: "",
+// };
 
 const initialData = [];
 
@@ -30,7 +30,7 @@ const Signup = () => {
   const [userLogIn, setUserLogIn] = useState(initialState);
   // const [disabled, setDisabled] = useState(true);
   const [fitnessData, setFitnessData] = useState(initialData);
-  const [formErrors, setFormErrors] = useState(initialErrors);
+  // const [formErrors, setFormErrors] = useState(initialErrors);
 
   const onChange = (evt) => {
     setUserLogIn({ ...userLogIn, [evt.target.name]: evt.target.value });
@@ -54,21 +54,21 @@ const Signup = () => {
       });
   };
 
-  const inputChange = (name, value) => {
-    yup
-      .reach(Schema, name)
-      .validate(value)
-      .then(() => {
-        setFormErrors({ ...formErrors, [name]: "" });
-      })
-      .catch((err) => {
-        setFormErrors({ ...formErrors, [name]: err.errors[0] });
-      });
-    setUserLogIn({
-      ...userLogIn,
-      [name]: value,
-    });
-  };
+  // const inputChange = (name, value) => {
+  //   yup
+  //     .reach(Schema, name)
+  //     .validate(value)
+  //     .then(() => {
+  //       setFormErrors({ ...formErrors, [name]: "" });
+  //     })
+  //     .catch((err) => {
+  //       setFormErrors({ ...formErrors, [name]: err.errors[0] });
+  //     });
+  //   setUserLogIn({
+  //     ...userLogIn,
+  //     [name]: value,
+  //   });
+  // };
 
   // useEffect(() => {
   //   Schema.isValid(userLogIn).then((valid) => setDisabled(!valid));

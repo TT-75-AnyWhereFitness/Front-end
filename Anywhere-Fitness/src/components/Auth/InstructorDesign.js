@@ -4,8 +4,8 @@ import Lesson from "./ClassCards";
 import ClassForm from "../Classform";
 
 export default function Instructor() {
-  const [search, setSearch] = useState({ query: "", item: "" }); // SEARCH CLASSES
-  const options = ["time", "date", "duration", "type", "intensity", "location"];
+  // const [search, setSearch] = useState({ query: "", item: "" }); // SEARCH CLASSES
+  // const options = ["time", "date", "duration", "type", "intensity", "location"];
   const [card, setCard] = useState([]);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function Instructor() {
       .catch((error) => {
         console.log("Home axios error", error);
       });
-  }, []);
+  }, );
 
   return (
     <div className="container">

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import axios from "axios";
 // NEEDS PROPS FROM HOME TO MAKE CARDS FOR CLASSES

@@ -3,8 +3,8 @@ import axios from "axios"; // with auth?
 import Lesson from "./ClassCards";
 
 const Home = () => {
-  const [search, setSearch] = useState({ query: "", item: "" }); // SEARCH CLASSES
-  const options = ["time", "date", "duration", "type", "intensity", "location"];
+  // const [search, setSearch] = useState({ query: "", item: "" }); // SEARCH CLASSES
+  // const options = ["time", "date", "duration", "type", "intensity", "location"];
   const [card, setCard] = useState([]);
   useEffect(() => {
     axios
@@ -19,7 +19,7 @@ const Home = () => {
       .catch((error) => {
         console.log("Home axios error", error);
       });
-  }, []);
+     }, );
 
   return (
     <div className="container">
