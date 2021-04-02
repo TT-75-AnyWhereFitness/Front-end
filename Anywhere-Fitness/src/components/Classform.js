@@ -1,29 +1,61 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import axios from "axios";
 
 const initialState = {
-    name: "",
-    type: "",
-    startTime: "",
-    duration: "",
-    intensity: "",
-    location: "",
-    attendees:"",
-    size:"",
-  };
+  name: "",
+  instructor_username: "",
+  type: "",
+  date: "",
+  start_time: "",
+  duration: 0,
+  intensity_level: "",
+  location: "",
+  attendees: 0,
+  max_size: 0,
+};
 
 const Classform = () => {
+  const [classInfo, setClassInfo] = useState(initialState);
 
-const [classInfo, setClassInfo] = useState(initialState)
+  const addLesson = () => {
+    axios
+      .post(
+        `https://tt75-anywhere-fitness.herokuapp.com/api/classes/`,
+        classInfo
+      )
+      .then((res) => {
+        console.log("res: ", res);
+        setClassInfo(initialState);
+      })
+      .catch((error) => {
+        console.log("error: ", error);
+      });
+  };
+
+  //onChange Event
+
+  const onChange = (evt) => {
+    setClassInfo({ ...classInfo, [evt.target.name]: evt.target.value });
+  };
 
   return (
     <>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={addLesson}>
         <label>
           Name:
           <input
             name="name"
             type="text"
             value={classInfo.name}
+            onChange={onChange}
+          />
+        </label>
+        <label>
+          Instructor:
+          <input
+            name="instructor_username"
+            type="text"
+            value={classInfo.instructor_username}
             onChange={onChange}
           />
         </label>
@@ -38,11 +70,21 @@ const [classInfo, setClassInfo] = useState(initialState)
         </label>
 
         <label>
+          Date
+          <input
+            name="date"
+            type="text"
+            value={classInfo.date}
+            onChange={onChange}
+          />
+        </label>
+
+        <label>
           Start time:
           <input
-            name="startTime"
+            name="start_time"
             type="text"
-            value={classInfo.startTime}
+            value={classInfo.start_time}
             onChange={onChange}
           />
         </label>
@@ -59,9 +101,9 @@ const [classInfo, setClassInfo] = useState(initialState)
         <label>
           Intensity level:
           <input
-            name="intensity"
+            name="intensity_level"
             type="text"
-            value={classInfo.intensity}
+            value={classInfo.intensity_level}
             onChange={onChange}
           />
         </label>
@@ -87,12 +129,13 @@ const [classInfo, setClassInfo] = useState(initialState)
         <label>
           Max class size:
           <input
-            name="size"
+            name="max_size"
             type="text"
-            value={classInfo.size}
+            value={classInfo.max_size}
             onChange={onChange}
           />
         </label>
+        <button onClick={addLesson}>SUBMIT CLASS</button>
       </form>
     </>
   );

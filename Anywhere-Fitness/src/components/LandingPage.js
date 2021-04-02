@@ -3,7 +3,6 @@ import React from "react";
 import axios from "axios";
 
 import "../assets/css/main.css";
-import Header from "./Header";
 import {
   Banner,
   Section1,
@@ -12,10 +11,11 @@ import {
   Contact,
   Footer,
 } from "./LandingPageComponents";
+import axiosWithAuth from "../utils/axiosWithAuth"
 
 export const LandingPage = () => {
   axios
-    .get("https://tt75-anywhere-fitness.herokuapp.com/")
+    .get("https://tt75-anywhere-fitness.herokuapp.com/api/classes")
     .then((res) => {
       console.log("res", res);
     })
@@ -24,7 +24,6 @@ export const LandingPage = () => {
     });
   return (
     <div id="wrapper">
-      <Header />
 
       <Banner />
 

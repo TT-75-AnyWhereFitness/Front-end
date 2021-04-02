@@ -1,25 +1,28 @@
 import React, { useState, useEffect } from "react";
-import * as yup from "yup";
+import { useHistory } from "react-router-dom";
 
-import Schema from "./Schema";
-import Header from "./Header";
+// import * as yup from "yup";
+import axios from "axios";
+
+// import Schema from "./Schema";
 
 const initialState = {
-  email: "",
+  username: "",
   password: "",
 };
 
-const initialErrors = {
-  email: "",
-  password: "",
-};
+// const initialErrors = {
+//   username: "",
+//   password: "",
+// };
 
-const initialDisabled = true;
+// const initialDisabled = false;
 
 const Login = () => {
   const [userLogIn, setUserLogIn] = useState(initialState);
-  const [disabled, setDisabled] = useState(initialDisabled);
-  const [formErrors, setFormErrors] = useState(initialErrors);
+  const history = useHistory();
+  // const [disabled, setDisabled] = useState(initialDisabled);
+  // const [formErrors, setFormErrors] = useState(initialErrors);
 
   const onChange = (evt) => {
     setUserLogIn({ ...userLogIn, [evt.target.name]: evt.target.value });
@@ -27,40 +30,55 @@ const Login = () => {
   };
   const onSubmit = (evt) => {
     evt.preventDefault();
-  };
-
-  const inputChange = (name, value) => {
-    yup
-      .reach(Schema, name)
-      .validate(value)
-      .then(() => {
-        setFormErrors({ ...formErrors, [name]: "" });
+    axios
+      .post(
+        "https://tt75-anywhere-fitness.herokuapp.com/api/auth/login",
+        userLogIn
+      )
+      .then((res) => {
+        // if(userLogIn)
+        console.log(res);
+        setUserLogIn(initialState);
+        history.push("/home")
       })
       .catch((err) => {
-        setFormErrors({ ...formErrors, [name]: err.errors[0] });
+        console.log(err);
       });
-    setUserLogIn({
-      ...userLogIn,
-      [name]: value,
-    });
   };
 
-  useEffect(() => {
-    Schema.isValid(userLogIn).then((valid) => setDisabled(!valid));
-  }, [userLogIn]);
+  // const inputChange = (name, value) => {
+  //   yup
+  //     .reach(Schema, name)
+  //     .validate(value)
+  //     .then(() => {
+  //       setFormErrors({ ...formErrors, [name]: "" });
+  //     })
+  //     .catch((err) => {
+  //       setFormErrors({ ...formErrors, [name]: err.errors[0] });
+  //     });
+  //   setUserLogIn({
+  //     ...userLogIn,
+  //     [name]: value,
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   Schema.isValid(userLogIn).then((valid) => setDisabled(!valid));
+  // }, [userLogIn]);
 
   return (
     <div>
-      <Header />
+      <br></br>
+      <br></br>
       <br></br>
       <br></br>
       <form onSubmit={onSubmit}>
         <label>
-          Email:
+          Username:
           <input
-            name="email"
-            type="email"
-            value={userLogIn.email}
+            name="username"
+            type="text"
+            value={userLogIn.username}
             onChange={onChange}
           />
         </label>
@@ -74,7 +92,7 @@ const Login = () => {
           />
         </label>
 
-        <button disabled={disabled}>Login</button>
+        <button /*disabled={disabled}*/>Login</button>
       </form>
     </div>
   );
